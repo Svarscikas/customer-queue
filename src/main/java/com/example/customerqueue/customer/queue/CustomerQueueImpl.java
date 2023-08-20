@@ -31,4 +31,20 @@ public class CustomerQueueImpl implements CustomerQueue {
     public String peek() {
         return blockingQueue.peek();
     }
+
+    @Override
+    public int queueSize() {
+        return blockingQueue.size();
+    }
+
+    @Override
+    public int indexOf(String customerNumber) {
+        return blockingQueue.stream().toList().indexOf(customerNumber);
+    }
+
+    @Override
+    public String last() {
+        List<String> list = blockingQueue.stream().toList();
+        return list.isEmpty() ? null : list.get(blockingQueue.size()-1);
+    }
 }

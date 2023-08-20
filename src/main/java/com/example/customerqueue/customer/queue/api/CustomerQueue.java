@@ -10,4 +10,10 @@ public interface CustomerQueue {
     String get();
 
     String peek();
+
+    int queueSize();
+
+    int indexOf(String customerNumber);
+
+    String last();
 }
