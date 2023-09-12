@@ -1,9 +1,9 @@
 package com.example.customerqueue.customer.rest.api;
 
-public class QueueItem {
+public class QueueItemModel {
     private final String customerNumber;
 
-    public QueueItem(String customerNumber) {
+    public QueueItemModel(String customerNumber) {
         this.customerNumber = customerNumber;
     }
 
