@@ -15,14 +15,14 @@ public class NewsResource {
     public NewsResource(NewsItemRepository newsItemRepository) {
         this.newsItemRepository = newsItemRepository;
     }
-    @CrossOrigin(origins = "http://www.remedyband.lt/")
+    @CrossOrigin(origins = "*")
     @GetMapping("/news")
     public Iterable<NewsItem> getNews() {
         Iterable<NewsItem> newsItems = newsItemRepository.findAll();
 
         return newsItems;
     }
-    @CrossOrigin (origins = "http://www.remedyband.lt/")
+    @CrossOrigin (origins = "*")
     @GetMapping("/article")
     @ResponseBody
     public Optional<NewsItem> getNewsItem(@RequestParam Long id) {
