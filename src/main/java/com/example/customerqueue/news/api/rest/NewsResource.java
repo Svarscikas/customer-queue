@@ -15,14 +15,14 @@ public class NewsResource {
     public NewsResource(NewsItemRepository newsItemRepository) {
         this.newsItemRepository = newsItemRepository;
     }
-    @CrossOrigin(origins = "https://customer-queue-1s1w.onrender.com/")
+    @CrossOrigin(origins = "http://www.remedyband.lt/")
     @GetMapping("/news")
     public Iterable<NewsItem> getNews() {
         Iterable<NewsItem> newsItems = newsItemRepository.findAll();
 
         return newsItems;
     }
-    @CrossOrigin (origins = "https://customer-queue-1s1w.onrender.com/")
+    @CrossOrigin (origins = "http://www.remedyband.lt/")
     @GetMapping("/article")
     @ResponseBody
     public Optional<NewsItem> getNewsItem(@RequestParam Long id) {
