@@ -13,11 +13,11 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class CustomerResource {
 
-    @Value("${queue-item-process-time}")
-    private int queueItemProcessTime;
+    //@Value("${queue-item-process-time}")
+    //private int queueItemProcessTime;
 
-    @Value("${default-first-customer-number}")
-    private String defaultFirstCustomNumber;
+    //@Value("${default-first-customer-number}")
+    //private String defaultFirstCustomNumber;
 
     private final QueueItemRepository queueItemRepository;
 
