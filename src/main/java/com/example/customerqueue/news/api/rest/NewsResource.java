@@ -2,6 +2,9 @@ package com.example.customerqueue.news.api.rest;
 
 import com.example.customerqueue.news.api.NewsItem;
 import com.example.customerqueue.news.api.NewsItemRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -11,6 +14,7 @@ public class NewsResource {
 
     private final NewsItemRepository newsItemRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(NewsResource.class);
 
     public NewsResource(NewsItemRepository newsItemRepository) {
         this.newsItemRepository = newsItemRepository;
@@ -36,5 +40,12 @@ public class NewsResource {
         String text = newsItem.getText();
         newsItemRepository.save(newsItem);
         return newsItem;
+    }
+
+    @GetMapping("/get-client-ip")
+    public String getClientIp(HttpServletRequest request) {
+        String clientIp = request.getRemoteAddr();
+        logger.info(clientIp);
+        return "Client IP Address: " + clientIp;
     }
 }
