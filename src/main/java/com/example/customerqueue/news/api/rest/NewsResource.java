@@ -44,7 +44,7 @@ public class NewsResource {
         newsItemRepository.save(newsItem);
         return newsItem;
     }
-
+    @CrossOrigin (origins = "*")
     @GetMapping("/get-user-info")
     public UserInfo getClientIp(HttpServletRequest request) {
         String clientIp = request.getRemoteAddr();
