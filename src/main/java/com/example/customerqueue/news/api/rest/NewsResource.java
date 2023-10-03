@@ -51,7 +51,7 @@ public class NewsResource {
     @CrossOrigin (origins = "*")
     @GetMapping("/get-user-info")
     public UserInfo getClientIp(HttpServletRequest request) {
-        String clientIp = request.getRemoteAddr();
+        String clientIp = request.getHeader("X-Forwarded-For");
 
         //logger.info(clientIp);
         String apiUrl = "http://ip-api.com/json/" + clientIp;
