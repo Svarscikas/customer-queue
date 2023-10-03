@@ -62,7 +62,7 @@ public class NewsResource {
         if(info != null) {
             user.setId(clientIp);
             //info.setQuery(clientIp);
-
+            user.setCity(info.getCity());
             user.setQuery(info.getQuery());
             user.setCountry(info.getCountry());
             user.setStatus(info.getStatus());

@@ -15,12 +15,21 @@ public class UserInfo {
     String country;
     @JsonProperty
     String status;
-
+    @JsonProperty
+    String city;
     public UserInfo() {
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getCountry() {
