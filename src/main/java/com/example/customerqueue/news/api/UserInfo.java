@@ -5,25 +5,49 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 @Entity
 public class UserInfo {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @JsonProperty
-    private Long id;
-
+    String id;
     @JsonProperty
     String query;
     @JsonProperty
     String country;
     @JsonProperty
     String status;
+
     public UserInfo() {
     }
 
-    public UserInfo(String query,String status, String country) {
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setQuery(String query) {
         this.query = query;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public UserInfo(String status, String country) {
         this.status = status;
         this.country = country;
     }

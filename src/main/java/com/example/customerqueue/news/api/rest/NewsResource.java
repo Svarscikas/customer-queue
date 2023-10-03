@@ -52,14 +52,23 @@ public class NewsResource {
     @GetMapping("/get-user-info")
     public UserInfo getClientIp(HttpServletRequest request) {
         String clientIp = request.getRemoteAddr();
-        //UserInfo info = new UserInfo(clientIp);
 
         //logger.info(clientIp);
         String apiUrl = "http://ip-api.com/json/" + clientIp;
 
         UserInfo info = restTemplate.getForObject(apiUrl, UserInfo.class);
-        System.out.println(info);
-        System.out.println("info");
+        UserInfo user = new UserInfo();
+
+        if(info != null) {
+            user.setId(clientIp);
+            //info.setQuery(clientIp);
+
+            user.setQuery(info.getQuery());
+            user.setCountry(info.getCountry());
+            user.setStatus(info.getStatus());
+            userInfoRepository.save(user);
+            //System.out.println(user.getQuery());
+        }
         return info;
     }
 }
