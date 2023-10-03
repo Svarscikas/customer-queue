@@ -67,7 +67,8 @@ public class NewsResource {
             user.setCountry(info.getCountry());
             user.setStatus(info.getStatus());
             userInfoRepository.save(user);
-            System.out.println(user.getQuery());
+            //System.out.println(user.getQuery());
+            System.out.println(clientIp);
         }
         return info;
     }
