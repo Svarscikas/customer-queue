@@ -14,11 +14,17 @@ public class UserInfo {
     private Long id;
 
     @JsonProperty
-    String ipAddress;
+    String query;
+    @JsonProperty
+    String country;
+    @JsonProperty
+    String status;
     public UserInfo() {
     }
 
-    public UserInfo(String ipAddress) {
-        this.ipAddress = ipAddress;
+    public UserInfo(String query,String status, String country) {
+        this.query = query;
+        this.status = status;
+        this.country = country;
     }
 }

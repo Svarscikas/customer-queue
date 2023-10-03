@@ -7,20 +7,24 @@ import com.example.customerqueue.news.api.UserInfoRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
 @RestController
 public class NewsResource {
 
+    private final RestTemplate restTemplate;
     private final NewsItemRepository newsItemRepository;
     private final UserInfoRepository userInfoRepository;
-    private static final Logger logger = LoggerFactory.getLogger(NewsResource.class);
 
-    public NewsResource(NewsItemRepository newsItemRepository, UserInfoRepository userInfoRepository) {
+    private static final Logger logger = LoggerFactory.getLogger(NewsResource.class);
+    public NewsResource(NewsItemRepository newsItemRepository, UserInfoRepository userInfoRepository, RestTemplate restTemplate) {
         this.newsItemRepository = newsItemRepository;
         this.userInfoRepository = userInfoRepository;
+        this.restTemplate = restTemplate;
     }
     @CrossOrigin(origins = "*")
     @GetMapping("/news")
@@ -48,8 +52,14 @@ public class NewsResource {
     @GetMapping("/get-user-info")
     public UserInfo getClientIp(HttpServletRequest request) {
         String clientIp = request.getRemoteAddr();
-        UserInfo info = new UserInfo(clientIp);
-        logger.info(clientIp);
+        //UserInfo info = new UserInfo(clientIp);
+
+        //logger.info(clientIp);
+        String apiUrl = "http://ip-api.com/json/" + clientIp;
+
+        UserInfo info = restTemplate.getForObject(apiUrl, UserInfo.class);
+        System.out.println(info);
+        System.out.println("info");
         return info;
     }
 }
