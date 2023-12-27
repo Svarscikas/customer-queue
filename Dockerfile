@@ -17,8 +17,6 @@ ENV SPRING_DATASOURCE_DRIVER_CLASS_NAME=""
 ENV SPRING_JPA_DATABASE_PLATFORM=""
 ENV SPRING_JPA_HIBERNATE_DDL_AUTO=""
 
-# Create the /app directory
-RUN mkdir /app
 
 # Create the application.properties file from environment variables
 RUN echo "spring.datasource.url=${SPRING_DATASOURCE_URL}" > /app/application.properties \
